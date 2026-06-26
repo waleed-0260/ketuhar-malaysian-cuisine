@@ -7,6 +7,7 @@ import { FadeReveal } from "@/components/shared/FadeReveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SimpleDivider } from "@/components/shared/SimpleDivider";
 import type { MenuItem, MenuCategory } from "@/types";
+import { useUIStore } from "@/lib/store";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -259,6 +260,7 @@ function MenuItemRow({ item }: { item: MenuItem }) {
 }
 
 export default function MenuPage() {
+  const {cartItems, addToCart, updateQuantity} = useUIStore();
   return (
     <div className="min-h-screen bg-ketuhar-cream pt-24 pb-20">
       {/* Page header */}

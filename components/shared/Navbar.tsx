@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "./MobileNav";
 import { useUIStore } from "@/lib/store";
@@ -18,7 +18,8 @@ const navLinks = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const { setMobileNavOpen } = useUIStore();
+  const { setMobileNavOpen, setCartOpen, cartOpen } = useUIStore();
+  console.log("cart is opening or not", cartOpen)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -43,7 +44,7 @@ export function Navbar() {
               <span
                 className={cn(
                   "font-display text-lg tracking-[0.18em] uppercase font-medium transition-colors duration-400",
-                  scrolled ? "text-ketuhar-charcoal" : "text-white"
+                  scrolled ? "text-ketuhar-charcoal" : "text-black"
                 )}
               >
                 Ketuhar
@@ -51,7 +52,7 @@ export function Navbar() {
               <span
                 className={cn(
                   "text-[0.52rem] tracking-[0.28em] uppercase font-body transition-colors duration-400",
-                  scrolled ? "text-ketuhar-clay" : "text-white/65"
+                  scrolled ? "text-ketuhar-clay" : "text-black"
                 )}
               >
                 Malaysian Cuisine
@@ -66,7 +67,7 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "text-[0.8rem] tracking-wide font-body transition-opacity duration-200 hover:opacity-55",
-                    scrolled ? "text-ketuhar-charcoal" : "text-white/90"
+                    scrolled ? "text-ketuhar-charcoal" : "text-black"
                   )}
                 >
                   {link.label}
@@ -76,6 +77,9 @@ export function Navbar() {
 
             {/* Right actions */}
             <div className="flex items-center gap-3">
+              <button  onClick={() => setCartOpen(true)}>
+                <ShoppingCart/>
+              </button>
               <Link href="/reservations" className="hidden lg:block">
                 <Button
                   size="sm"

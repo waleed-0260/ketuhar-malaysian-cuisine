@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
+import { CartSheet } from "@/components/shared/CartSheet";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-display",
@@ -62,6 +63,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-ketuhar-cream text-ketuhar-charcoal">
         <Navbar />
+        <CartSheet/>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
